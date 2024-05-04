@@ -1,0 +1,11 @@
+api.company.local {
+    reverse_proxy localhost:5041
+}
+
+app.company.local {
+    reverse_proxy localhost:5041
+}
+
+aspnetcorespacookiesxsrf.local {
+    reverse_proxy localhost:5269
+}
