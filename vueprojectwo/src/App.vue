@@ -32,7 +32,9 @@ const get = () => fetch('https://api.company.local/protected', {
 
 <template>
   <h1>App</h1>
-
+  <div>
+    {{state.msg}}
+  </div>
   <main>
     <TheWelcome />
   </main>
