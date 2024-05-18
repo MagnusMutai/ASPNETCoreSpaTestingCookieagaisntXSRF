@@ -3,7 +3,7 @@ import {reactive} from 'vue';
 
 const state = reactive({msg: ''})
 
-const loginJson = () => fetch('https://aspnetcorespacookiesxsrf.company.local/login',{
+const loginJson = () => fetch('https://api.company.local/login',{
   method: 'POST',
   headers: {
     'Content-Type' : 'application/json',
