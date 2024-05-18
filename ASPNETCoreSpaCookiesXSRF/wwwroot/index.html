@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Title</title>
+</head>
+<body>
+    <form action="https://api.company.local/data" method="post">
+        <button>submit</button>
+    </form>
+
+    <form action="https://api.company.local/ctr/login" method="post">
+        <input hidden value="evil" name="username" />
+        <input hidden value="pw" name="password" />
+        <button>submit to ctrl</button>
+    </form>
+
+    <script>
+        const login = () => fetch('https://api.company.local/login', {
+            method: 'POST',
+            heades: {
+                'Content Type': 'application/json',
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                Username: 'evil',
+                Password: 'pw',
+            })
+        })
+    </script>
+</body>
+</html>
