@@ -9,7 +9,7 @@ const loginJson = () => fetch('https://aspnetcorespacookiesxsrf.company.local/lo
     'Content-Type' : 'application/json',
   },
   credentials: "include",
-  body: JSON.stringify(value: {
+  body: JSON.stringify( value, {
     Username: 'foo',
     Password: 'pw',
   })
