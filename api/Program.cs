@@ -8,12 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-//Add the reverse proxy capability to the server
-builder.Services.AddReverseProxy()
-    //Initialize the reverse proxy from the "ReverseProxy" section of configuration
-    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
-//Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -28,9 +22,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-// app.MapForwarder("{**rest}", "https://api.company.local");
-
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -57,8 +48,6 @@ app.MapPost("/login", (LoginForm form, HttpContext ctx) =>
 });
 
 app.MapDefaultControllerRoute();
-
-app.MapReverseProxy();
 
 app.MapControllers();
 
