@@ -10,7 +10,7 @@ const loginJson = () => fetch('https://api.company.local/login',{
   },
   credentials: "include",
   body: JSON.stringify( value, {
-    Username: 'foo',
+    Username: 'Evil Mim',
     Password: 'pw',
   })
 })

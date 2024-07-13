@@ -12,6 +12,12 @@ namespace api.Controllers
     {
         public IActionResult Login([FromForm] LoginForm form)
         {
+
+            if(!HttpContext.Request.Headers.Origin.First().StartsWith("https://app.company.local"))
+            {
+                return BadRequest();
+            }
+
             HttpContext.SignInAsync(new ClaimsPrincipal(new[]
             {
                 new ClaimsIdentity(new List<Claim>
