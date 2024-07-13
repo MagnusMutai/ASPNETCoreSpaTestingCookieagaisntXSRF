@@ -9,12 +9,17 @@
         <button>submit</button>
     </form>
 
+    <form action="https://api.company.local/login" method="post">
+        <input hidden value="evil" name="username" />
+        <input hidden value="pw" name="password" />
+        <button>submit to login min api
+
     <form action="https://api.company.local/ctr/login" method="post">
         <input hidden value="evil" name="username" />
         <input hidden value="pw" name="password" />
         <button>submit to ctrl</button>
     </form>
-
+    <a href="https:.//api.company.local/protected">Link</a>
     <script>
         const login = () => fetch('https://api.company.local/login', {
             method: 'POST',

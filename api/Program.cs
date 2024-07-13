@@ -5,8 +5,16 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddCors();
 builder.Services.AddControllers();
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o =>
+    {
+        o.Cookie.Domain = ".company.local";
+        o.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        o.Cookie.SameSite = SameSite.Strict;
+    } );
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -20,6 +28,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(x =>
+    x.WithOrigins("https://app.company.local")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()
+
+        // x.WithOrigins("https://app.company.local", "https://evil.local")
+        // .AllowAnyMethod()
+        // .AllowAnyHeader()
+        // .AllowCredentials()    
+);
 
 app.UseHttpsRedirection();
 
